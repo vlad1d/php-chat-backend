@@ -56,7 +56,7 @@
         }
     },
     "scripts": {
-        "start": "php -S localhost:8080 -t public",
-        "test": "phpunit"
+        "start": "php -d error_reporting=E_ALL\\ \\&\\ ~E_DEPRECATED -S localhost:8080 -t public",
+        "test": "php -d error_reporting=E_ALL\\ \\&\\ ~E_DEPRECATED vendor/bin/phpunit"
     }
 }

@@ -26,13 +26,13 @@ class SendMessageActionTest extends TestCase
 
         $messageRepositoryProphecy = $this->prophesize(MessageRepository::class);
         $messageRepositoryProphecy
-            ->sendMessage(1, 1, 'hi bunq!')
+            ->sendMessage(1, 1, 'hi world!')
             ->shouldBeCalledOnce();
         $container->set(MessageRepository::class, $messageRepositoryProphecy->reveal());
 
         $request = $this->createRequest('POST', '/messages/1/users/1')
             ->withHeader('Content-Type', 'application/json')
-            ->withParsedBody(['content' => 'hi bunq!']);
+            ->withParsedBody(['content' => 'hi world!']);
         $response = $app->handle($request);
 
         $payload = (string) $response->getBody();
@@ -56,14 +56,14 @@ class SendMessageActionTest extends TestCase
         $container = $app->getContainer();
         $messageRepositoryProphecy = $this->prophesize(MessageRepository::class);
         $messageRepositoryProphecy
-            ->sendMessage(1, 1, 'hi bunq!')
+            ->sendMessage(1, 1, 'hi world!')
             ->willThrow(new ChatNotFoundException())
             ->shouldBeCalledOnce();
         $container->set(MessageRepository::class, $messageRepositoryProphecy->reveal());
 
         $request = $this->createRequest('POST', '/messages/1/users/1')
             ->withHeader('Content-Type', 'application/json')
-            ->withParsedBody(['content' => 'hi bunq!']);
+            ->withParsedBody(['content' => 'hi world!']);
         $response = $app->handle($request);
 
         $payload = (string) $response->getBody();
@@ -88,14 +88,14 @@ class SendMessageActionTest extends TestCase
         $container = $app->getContainer();
         $messageRepositoryProphecy = $this->prophesize(MessageRepository::class);
         $messageRepositoryProphecy
-            ->sendMessage(1, 1, 'hi bunq!')
+            ->sendMessage(1, 1, 'hi world!')
             ->willThrow(new UserNotFoundException())
             ->shouldBeCalledOnce();
         $container->set(MessageRepository::class, $messageRepositoryProphecy->reveal());
 
         $request = $this->createRequest('POST', '/messages/1/users/1')
             ->withHeader('Content-Type', 'application/json')
-            ->withParsedBody(['content' => 'hi bunq!']);
+            ->withParsedBody(['content' => 'hi world!']);
         $response = $app->handle($request);
 
         $payload = (string) $response->getBody();
@@ -120,14 +120,14 @@ class SendMessageActionTest extends TestCase
         $container = $app->getContainer();
         $messageRepositoryProphecy = $this->prophesize(MessageRepository::class);
         $messageRepositoryProphecy
-            ->sendMessage(1, 1, 'hi bunq!')
+            ->sendMessage(1, 1, 'hi world!')
             ->willThrow(new UserNotInChatException())
             ->shouldBeCalledOnce();
         $container->set(MessageRepository::class, $messageRepositoryProphecy->reveal());
 
         $request = $this->createRequest('POST', '/messages/1/users/1')
             ->withHeader('Content-Type', 'application/json')
-            ->withParsedBody(['content' => 'hi bunq!']);
+            ->withParsedBody(['content' => 'hi world!']);
         $response = $app->handle($request);
 
         $payload = (string) $response->getBody();

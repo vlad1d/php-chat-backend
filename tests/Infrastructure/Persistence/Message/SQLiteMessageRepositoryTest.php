@@ -33,10 +33,10 @@ class SQLiteMessageRepositoryTest extends TestCase
         $this->userRepository->create(1);
         $this->chatRepository->joinMember(1, 1);
 
-        $this->messageRepository->sendMessage(1, 1, 'Hello, Bunq!');
+        $this->messageRepository->sendMessage(1, 1, 'Hello, world!');
         $messages = $this->messageRepository->listMessages(1, 1);
         $this->assertCount(1, $messages);
-        $this->assertEquals('Hello, Bunq!', $messages[0]->getContent());
+        $this->assertEquals('Hello, world!', $messages[0]->getContent());
     }
 
     public function testSendMessageThrowsChatNotFoundException()

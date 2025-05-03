@@ -12,7 +12,7 @@ class MessageTest extends TestCase
     public function messageProvider(): array
     {
         return [
-            [1, 1, 1, 'Hey, Bunq!'],
+            [1, 1, 1, 'Hey, world!'],
             [2, 1, 2, 'Hey back! You good?'],
             [3, 1, 1, 'Totally!'],
             [4, 3, 3, 'Anyone here?'],
